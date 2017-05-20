@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import select
 import socket
@@ -47,17 +49,21 @@ class Client:
         return self.to_send
 
     def process_read(self):
-        s = self.socket.recv(1024)
-        print('Client {} received: {!r}'.format(self.address, s))
+        try:
+            s = self.socket.recv(1024)
+            print('Client {} received: {!r}'.format(self.address, s))
+        except ConnectionResetError as e:
+            print('Client {} recv failed: {!r}'.format(self.address, e))
+            s = None
         if not s:
             self.socket.close()
             self.client_list.remove(self)
-            return
-        self.read_buffer += s
-        while b'\n' in self.read_buffer:
-            line, rest = self.read_buffer.split(b'\n', 1)
-            self.read_buffer = rest
-            self.process_line(line)
+        else:
+            self.read_buffer += s
+            while b'\n' in self.read_buffer:
+                line, rest = self.read_buffer.split(b'\n', 1)
+                self.read_buffer = rest
+                self.process_line(line)
 
     def process_line(self, line):
         line = line.rstrip()
