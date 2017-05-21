@@ -43,7 +43,7 @@ Create a "hello world" Javascript web app - we will use [next.js](https://github
 
 Now :) just run the command:
 
-![screenshot](screenshot-now-js.png)
+![screenshot](screenshots/screenshot-now-js.png)
 
 
 Python Flask example
@@ -83,7 +83,7 @@ It will be deployed using Docker, all we need to do is to write a [Dockerfile](h
 
 Again, deploy with a single command `now`:
 
-![screenshot](screenshot-now-flask.png)
+![screenshot](screenshots/screenshot-now-flask.png)
 
       
       
