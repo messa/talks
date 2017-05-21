@@ -21,21 +21,25 @@ Create a "hello world" Javascript web app - we will use [next.js](https://github
 
 - package.json
 
-      {
-        "dependencies": {
-          "next": "^2.3.1",
-          "react": "^15.5.4",
-          "react-dom": "^15.5.4"
-        },
-        "scripts": {
-          "build": "next build",
-          "start": "next start"
-        }
-      }
+  ```json
+  {
+    "dependencies": {
+      "next": "^2.3.1",
+      "react": "^15.5.4",
+      "react-dom": "^15.5.4"
+    },
+    "scripts": {
+      "build": "next build",
+      "start": "next start"
+    }
+  }
+  ```
 
 - pages/index.js
 
-      export default () => <h1>Hello from JS</h1>
+  ```javascript
+  export default () => <h1>Hello from JS</h1>
+  ```
 
 Now :) just run the command:
 
@@ -49,29 +53,32 @@ Create a "hello world" Flask web app:
 
 - hello.py
 
-      from flask import Flask
+  ```python
+  from flask import Flask
 
-      app = Flask(__name__)
+  app = Flask(__name__)
 
-      @app.route('/')
-      def index():
-          return 'Hello from Flask!'
-
+  @app.route('/')
+  def index():
+      return 'Hello from Flask!'
+  ```
 
 It will be deployed using Docker, all we need to do is to write a [Dockerfile](https://docs.docker.com/engine/reference/builder/):
 
 - Dockerfile
 
-      FROM python:3.5
+  ```Dockerfile
+  FROM python:3.5
 
-      RUN python3 -m venv venv 
-      RUN venv/bin/pip install flask gunicorn
+  RUN python3 -m venv venv 
+  RUN venv/bin/pip install flask gunicorn
 
-      COPY hello.py .
+  COPY hello.py .
 
-      EXPOSE 8000
+  EXPOSE 8000
 
-      CMD ["venv/bin/gunicorn", "--bind", "0.0.0.0:8000", "hello:app"]
+  CMD ["venv/bin/gunicorn", "--bind", "0.0.0.0:8000", "hello:app"]
+  ```
 
 
 Again, deploy with a single command `now`:
