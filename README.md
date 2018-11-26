@@ -3,6 +3,14 @@ Talks
 
 Here are slides and source code from some of my talks. Mostly in Czech language.
 
+
+2018
+----
+
+- Nov 21: **[make & Makefile](2018-11-21_Pyvo-Makefile)** at [Pyvo](https://pyvo.cz/) (Python Prague meetup)
+  <img src="https://www.messa.cz/static/icons/python.png" height=16>
+
+
 2017
 ----
 
