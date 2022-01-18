@@ -23,7 +23,6 @@ export default async function handler(req, res) {
   return res.json({
     items: items.slice(offset, offset + 3),
     nextCursor: toBase64(toBase64((offset + 3).toString().padStart(9, '0'))),
-
   })
 }
 
