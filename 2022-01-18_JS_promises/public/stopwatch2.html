@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch</title>
+  <link rel='stylesheet' href='/basic.css' />
+</head>
+<body>
+
+<h1>Demo 2</h1>
+
+<p>
+  Stopwatch #1:
+  <button id='start1'>Start</button>
+  <span id='time1'></span>
+</p>
+
+<p>
+  Stopwatch #2:
+  <button id='start2'>Start</button>
+  <span id='time2'></span>
+</p>
+
+<p>
+  <input />
+</p>
+
+<script>
+  class Stopwatch {
+
+    constructor(startButton, timeElement) {
+      this.timeElement = timeElement
+      this.startButton = startButton
+      this.timeElement.innerText = '-'
+      this.startButton.addEventListener('click', () => this.handlerStartClick())
+    }
+
+    handlerStartClick() {
+      this.startTime = new Date()
+
+      const update = () => {
+        this.timeElement.innerText = (new Date() - this.startTime) / 1000
+        setTimeout(update, 500)
+      }
+
+      update()
+    }
+
+  }
+
+  new Stopwatch(document.getElementById('start1'), document.getElementById('time1'))
+  new Stopwatch(document.getElementById('start2'), document.getElementById('time2'))
+
+</script>
+</body>
+</html>
